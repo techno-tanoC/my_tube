@@ -39,6 +39,7 @@ defmodule MyTube.Mixfile do
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
       {:comeonin, "~> 3.0"},
+      {:secure_random, "~> 0.5"},
     ]
   end
 
