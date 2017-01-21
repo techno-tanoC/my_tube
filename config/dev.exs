@@ -41,3 +41,7 @@ config :my_tube, MyTube.Repo,
   database: "my_tube_dev",
   hostname: "localhost",
   pool_size: 10
+
+config :my_tube, MyTube.Auth,
+  email: "user@example.com",
+  password: "pass"
