@@ -5,25 +5,19 @@ import Delete from 'material-ui/svg-icons/action/delete'
 import Create from 'material-ui/svg-icons/content/create'
 
 import OverlayLink from '../OverlayLink'
+import {thumb} from './consts.js'
 import styles from './styles.css'
 
 export default ({id, title, url}) => {
   return (
 		<Card className={styles.cardMargin}>
       <OverlayLink url={url}>
-        <CardHeader
-          title={title}
-          actAsExpander={true}
-          showExpandableButton={true} />
+        <img src={thumb(url)} width="196px" height="110px" />
+        {title}
       </OverlayLink>
-      <CardActions>
-        <IconButton>
-          <Create />
-        </IconButton>
         <IconButton>
           <Delete />
         </IconButton>
-      </CardActions>
     </Card>
   )
 }
