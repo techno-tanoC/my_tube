@@ -17,12 +17,13 @@ defmodule MyTube.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    resources "/session", SessionController, only: [:new, :create, :delete]
+    get "/login", SessionController, :new
   end
 
   scope "/api", MyTube do
     pipe_through :api
 
+    resources "/session", SessionController, only: [:create, :delete]
     resources "/items", ItemController, only: [:index, :create, :show, :delete]
   end
 end
