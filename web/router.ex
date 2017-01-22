@@ -20,8 +20,9 @@ defmodule MyTube.Router do
     resources "/session", SessionController, only: [:new, :create, :delete]
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", MyTube do
-  #   pipe_through :api
-  # end
+  scope "/api", MyTube do
+    pipe_through :api
+
+    resources "/items", ItemController, only: [:index, :create, :show, :delete]
+  end
 end
