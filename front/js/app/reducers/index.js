@@ -1,7 +1,10 @@
 import {combineReducers} from 'redux'
 import {Seq} from 'immutable'
 
-import {SET_ITEMS} from '../actions'
+import {
+  SET_ITEMS,
+  UPDATE_CREATE_DIALOG
+} from '../actions'
 
 const items = (state = Seq(), action) => {
   switch (action.type) {
@@ -12,6 +15,16 @@ const items = (state = Seq(), action) => {
   }
 }
 
+const createDialog = (state = {open: false, title: "", url: ""}, action) => {
+  switch (action.type) {
+    case UPDATE_CREATE_DIALOG:
+      return {...state, ...action.payload}
+    default:
+      return state
+  }
+}
+
 export default combineReducers({
-  items
+  items,
+  createDialog
 })
