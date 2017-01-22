@@ -1,19 +1,31 @@
 defmodule MyTube.SessionController do
   use MyTube.Web, :controller
 
+  alias MyTube.ApiKey
+
   def new(conn, _params) do
     render conn, "new.html"
   end
 
   def create(conn, _params) do
-    conn
-    |> put_flash(:info, "Login successfully.")
-    |> redirect(to: page_path(conn, :index))
+    token = SecureRandom.base64(64)
+    changeset = ApiKey.changeset(%ApiKey{}, %{"token" => token})
+
+    case Repo.insert(changeset) do
+      {:ok, api_key} ->
+        conn
+        |> put_status(:created)
+        |> render(conn, "show.json", api_key: api_key)
+      {:error, changeset} ->
+        conn
+        |> put_status(:unprocessable_entity)
+        |> render(MyTube.ChangesetView, "error.json", changeset: changeset)
+    end
   end
 
-  def delete(conn, _params) do
-    conn
-    |> put_flash(:info, "Logout successfully.")
-    |> redirect(to: page_path(conn, :index))
+  def delete(conn, %{"token" => token}) do
+    api_key = Repo.get_by!(ApiKey, token: token)
+    Repo.delete!(api_key)
+    send_resp(conn, :no_content, "")
   end
 end

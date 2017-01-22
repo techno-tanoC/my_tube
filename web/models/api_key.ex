@@ -13,6 +13,6 @@ defmodule MyTube.ApiKey do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:token])
+    |> unique_constraint(:token)
   end
- end
 end
