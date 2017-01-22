@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 
 import Header from '../Header'
 import ItemList from '../ItemList'
+import styles from './styles.css'
 
 export default class App extends Component {
   componentDidMount() {
@@ -12,7 +13,9 @@ export default class App extends Component {
     return (
       <div>
         <Header />
-        <ItemList />
+        <div className={styles.itemList} >
+          <ItemList />
+        </div>
       </div>
     )
   }
