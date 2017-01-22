@@ -5,3 +5,9 @@ export const getItems = func => {
     .get('/api/items')
     .end(func)
 }
+
+export const deleteItem = (id, func) => {
+  request
+    .del(`/api/items/${id}`)
+    .end(func)
+}

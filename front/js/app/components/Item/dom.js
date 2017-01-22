@@ -4,11 +4,12 @@ import IconButton from 'material-ui/IconButton'
 import Delete from 'material-ui/svg-icons/action/delete'
 import Create from 'material-ui/svg-icons/content/create'
 
+import {deleteItem} from '../../utils/request.js'
 import OverlayLink from '../OverlayLink'
 import {thumb} from './consts.js'
 import styles from './styles.css'
 
-export default ({id, title, url}) => {
+export default ({id, title, url, reload}) => {
   return (
 		<Card className={styles.cardMargin}>
       <OverlayLink url={url}>
@@ -16,7 +17,10 @@ export default ({id, title, url}) => {
         {title}
       </OverlayLink>
         <IconButton>
-          <Delete />
+          <Delete onClick={() => {
+            deleteItem(id)
+            reload()
+          }}/>
         </IconButton>
     </Card>
   )
