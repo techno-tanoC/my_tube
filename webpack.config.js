@@ -1,6 +1,7 @@
 module.exports = {
   entry: {
-    app: "./front/js/app/index.js"
+    app: "./front/js/app/index.js",
+    login: "./front/js/login/index.js"
   },
   output: {
     path: "./priv/static/js",
