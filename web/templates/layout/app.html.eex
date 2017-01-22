@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
-  <body>
+  <body style="margin: 0; padding: 0;">
     <main role="main">
       <%= render @view_module, @view_template, assigns %>
     </main>
