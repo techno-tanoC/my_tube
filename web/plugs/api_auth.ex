@@ -6,7 +6,7 @@ defmodule MyTube.Plug.ApiAuth do
   def init(default), do: default
 
   def call(conn, _ \\ []) do
-    token = Auth.access_token(conn)
+    token = Auth.header_token(conn)
 
     if token && Repo.get_by(ApiKey, token: token) do
       conn

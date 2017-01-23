@@ -29,7 +29,7 @@ defmodule MyTube.SessionController do
   end
 
   def delete(conn, _params) do
-    token = Auth.access_token(conn)
+    token = Auth.header_token(conn)
 
     if token do
       api_key = Repo.get_by!(ApiKey, token: token)
