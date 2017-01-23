@@ -4,7 +4,12 @@ defmodule MyTube.SessionController do
   alias MyTube.{Auth, ApiKey}
 
   def new(conn, _params) do
-    render conn, "new.html"
+    token = Auth.cookie_token(conn)
+    if token && Repo.get_by(ApiKey, token: token) do
+      redirect(conn, to: "/")
+    else
+      render conn, "new.html"
+    end
   end
 
   def create(conn, %{"session" => params}) do
