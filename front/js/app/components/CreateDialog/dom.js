@@ -1,14 +1,18 @@
 import React, { Component } from 'react'
-import RaisedButton from 'material-ui/RaisedButton'
+import FloatingActionButton from 'material-ui/FloatingActionButton'
+import ContentAdd from 'material-ui/svg-icons/content/add'
 import Dialog from 'material-ui/Dialog'
 
 import {contentStyle, InputField, actions} from './consts.js'
+import styles from './styles.css'
 
 export default props => {
   const {open, url, openDialog, closeDialog, changeUrl} = props
   return (
     <div>
-      <RaisedButton label="Create" onTouchTap={openDialog} />
+      <FloatingActionButton className={styles.floatingButton} onClick={openDialog}>
+        <ContentAdd />
+      </FloatingActionButton>
       <Dialog
         title="Create Item"
         model={false}

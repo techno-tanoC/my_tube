@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 
 import Header from '../Header'
 import ItemList from '../ItemList'
+import CreateDialog from '../CreateDialog'
 import styles from './styles.css'
 
 export default class App extends Component {
@@ -16,6 +17,7 @@ export default class App extends Component {
         <div className={styles.itemList} >
           <ItemList />
         </div>
+        <CreateDialog />
       </div>
     )
   }
