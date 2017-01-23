@@ -13,6 +13,11 @@ defmodule MyTube.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :auth do
+    plug :accepts, ["json"]
+    plug MyTube.Plug.ApiAuth
+  end
+
   scope "/", MyTube do
     pipe_through :browser # Use the default browser stack
 
@@ -21,10 +26,15 @@ defmodule MyTube.Router do
   end
 
   scope "/api", MyTube do
+    pipe_through :auth
+
+    resources "/items", ItemController, only: [:index, :create, :show, :delete]
+  end
+
+  scope "/api", MyTube do
     pipe_through :api
 
     post "/session", SessionController, :create
     delete "/session", SessionController, :delete
-    resources "/items", ItemController, only: [:index, :create, :show, :delete]
   end
 end
