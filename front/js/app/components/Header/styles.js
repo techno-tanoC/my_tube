@@ -1,6 +1,6 @@
 const header = {
-    position: "fixed",
-    top: 0,
+  position: "fixed",
+  top: 0,
   left: 0
 }
 

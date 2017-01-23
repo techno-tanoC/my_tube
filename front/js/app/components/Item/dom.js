@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import {Card, CardActions, CardHeader, CardText, CardTitle} from 'material-ui/Card'
 import IconButton from 'material-ui/IconButton'
 import Delete from 'material-ui/svg-icons/action/delete'
-import Create from 'material-ui/svg-icons/content/create'
 
 import {deleteItem} from '../../utils/request.js'
 import OverlayLink from '../OverlayLink'

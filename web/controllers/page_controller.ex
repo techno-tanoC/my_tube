@@ -4,7 +4,7 @@ defmodule MyTube.PageController do
   def index(conn, _params) do
     token = MyTube.Auth.cookie_token(conn)
     if token && MyTube.Repo.get_by(MyTube.ApiKey, token: token) do
-      render conn, "index.html"
+      render(conn, "index.html")
     else
       redirect(conn, to: "/login")
     end
