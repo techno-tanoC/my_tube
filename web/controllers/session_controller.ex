@@ -10,7 +10,7 @@ defmodule MyTube.SessionController do
   def create(conn, %{"session" => params}) do
     auth = Application.get_env(:my_tube, MyTube.Auth)
     if params["name"] == auth[:name] && params["pass"] == auth[:pass] do
-      token = SecureRandom.base64(64)
+      token = SecureRandom.urlsafe_base64()
       changeset = ApiKey.changeset(%ApiKey{}, %{"token" => token})
 
       case Repo.insert(changeset) do
