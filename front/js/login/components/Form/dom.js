@@ -2,7 +2,7 @@ import React from 'react'
 import TextField from 'material-ui/TextField'
 import FlatButton from 'material-ui/FlatButton'
 
-import request from 'superagent'
+import {submit} from './consts.js'
 
 const login = (name, pass) => {
 }
@@ -23,7 +23,7 @@ export default ({name, pass, onChange}) => {
       <FlatButton
         label="Submit"
         primary={true}
-        onTouchTap={() => {}} />
+        onTouchTap={() => submit(name, pass)} />
     </div>
   )
 }
