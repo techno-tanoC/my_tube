@@ -42,5 +42,5 @@ config :my_tube, MyTube.Repo,
   pool_size: 10
 
 config :my_tube, MyTube.Auth,
-  email: "user@example.com",
-  password: "pass"
+  name: "user@example.com",
+  pass: "pass"
