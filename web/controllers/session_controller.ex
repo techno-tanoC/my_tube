@@ -15,7 +15,7 @@ defmodule MyTube.SessionController do
       {:ok, api_key} ->
         conn
         |> put_status(:created)
-        |> render(conn, "show.json", api_key: api_key)
+        |> render("show.json", api_key: api_key)
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
