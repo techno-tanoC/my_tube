@@ -1,7 +1,7 @@
 defmodule MyTube.SessionController do
   use MyTube.Web, :controller
 
-  alias MyTube.ApiKey
+  alias MyTube.{Auth, ApiKey}
 
   def new(conn, _params) do
     render conn, "new.html"
@@ -29,13 +29,13 @@ defmodule MyTube.SessionController do
   end
 
   def delete(conn, _params) do
-    token =
-      conn.req_headers
-      |> Enum.find_value(fn {key, val} -> key == "x-access-token" && val end)
+    token = Auth.access_token(conn)
+
     if token do
       api_key = Repo.get_by!(ApiKey, token: token)
       Repo.delete!(api_key)
     end
+
     send_resp(conn, :no_content, "")
   end
 end

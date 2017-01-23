@@ -1,14 +1,12 @@
 defmodule MyTube.Plug.ApiAuth do
   import Plug.Conn
 
-  alias MyTube.{Repo, ApiKey}
+  alias MyTube.{Repo, Auth, ApiKey}
 
   def init(default), do: default
 
   def call(conn, _ \\ []) do
-    token =
-      conn.req_headers
-      |> Enum.find_value(fn {key, val} -> key == "x-access-token" && val end)
+    token = Auth.access_token(conn)
 
     if token && Repo.get_by(ApiKey, token: token) do
       conn
