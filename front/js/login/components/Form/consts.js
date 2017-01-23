@@ -6,7 +6,8 @@ export const submit = (name, pass) => {
     .send({session: {name, pass}})
     .end((err, res) => {
       if (res.statusCode === 201) {
-        document.cookie = `access_token=${res.body.data.token}`
+        // 90 days
+        document.cookie = `access_token=${res.body.data.token};max-age=${60 * 60 * 24 * 90}`
         location.href = "/"
       } else {
       }
