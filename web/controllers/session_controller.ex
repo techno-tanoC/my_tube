@@ -29,9 +29,13 @@ defmodule MyTube.SessionController do
   end
 
   def delete(conn, _params) do
-    {_, token} = conn.req_headers |> Enum.find(&elem(&1, 0) == "x-access-token")
-    api_key = Repo.get_by!(ApiKey, token: token)
-    Repo.delete!(api_key)
+    token =
+      conn.req_headers
+      |> Enum.find_value(fn {key, val} -> key == "x-access-token" && val end)
+    if token do
+      api_key = Repo.get_by!(ApiKey, token: token)
+      Repo.delete!(api_key)
+    end
     send_resp(conn, :no_content, "")
   end
 end
