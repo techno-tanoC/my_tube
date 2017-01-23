@@ -23,7 +23,8 @@ defmodule MyTube.Router do
   scope "/api", MyTube do
     pipe_through :api
 
-    resources "/session", SessionController, only: [:create, :delete]
+    post "/session", SessionController, :create
+    delete "/session", SessionController, :delete
     resources "/items", ItemController, only: [:index, :create, :show, :delete]
   end
 end
