@@ -25,3 +25,15 @@ export const deleteItem = (id, func) => {
     .set("x-access-token", accessToken())
     .end(func)
 }
+
+export const logout = () => {
+  request
+    .del('/api/session')
+    .set("x-access-token", accessToken())
+    .end((err, res) => {
+      if (res.statusCode === 204) {
+        document.cookie = "access_token="
+        location.href = "/login"
+      }
+    })
+}
