@@ -18,4 +18,16 @@ defmodule MyTube.PageController do
     |> put_resp_header("content-disposition", "attachment; filename=\"my_tube.json\"")
     |> send_resp(200, json)
   end
+
+  def import(conn, _params) do
+    json = ""
+
+    json
+    |> Poison.decode!
+    |> Enum.each(fn map ->
+      Item.changeset(%Item{}, map) |> Repo.insert
+    end)
+
+    send_resp(conn, :no_content, "")
+  end
 end
