@@ -1,3 +1,36 @@
-.cardMargin {
-  margin: 10px 0;
+.wrapper {
+  font-family: Roboto, sans-serif;
+  width: 256px; /* image width */
+  height: calc(144px + 48px); /* image height + delete button height */
+  margin-bottom: 18px;
+  margin-right: 18px;
+}
+
+.paper {
+  box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.thumb {
+  width: 256px;
+  height: 144px;
+}
+
+.titleWrapper {
+  overflow: hidden;
+}
+
+.title {
+  width: calc(256px - 48px); /* image width - delete width */
+  height: 48px; /* delete height */
+  padding: 5px;
+  float: left;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.deleteButton {
+  z-index: 8;
 }

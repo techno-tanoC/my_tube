@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import {Card, CardActions, CardHeader, CardText, CardTitle} from 'material-ui/Card'
 import IconButton from 'material-ui/IconButton'
 import Delete from 'material-ui/svg-icons/action/delete'
 
@@ -10,17 +9,23 @@ import styles from './styles.css'
 
 export default ({id, title, url, reload}) => {
   return (
-		<Card className={styles.cardMargin}>
+    <div className={styles.wrapper}>
       <OverlayLink url={url}>
-        <img src={thumb(url)} width="196px" height="110px" />
-        {title}
+        <div className={styles.paper}>
+          <img src={thumb(url)} className={styles.thumb} />
+          <div className={styles.title}>
+            <div className={styles.titleWrapper}>
+              {title}
+            </div>
+          </div>
+          <IconButton className={styles.deleteButton}>
+            <Delete onClick={() => {
+              deleteItem(id)
+              reload()
+            }}/>
+          </IconButton>
+        </div>
       </OverlayLink>
-        <IconButton>
-          <Delete onClick={() => {
-            deleteItem(id)
-            reload()
-          }}/>
-        </IconButton>
-    </Card>
+    </div>
   )
 }
