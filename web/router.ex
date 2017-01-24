@@ -36,5 +36,6 @@ defmodule MyTube.Router do
 
     post "/session", SessionController, :create
     delete "/session", SessionController, :delete
+    get "/export", PageController, :export
   end
 end
