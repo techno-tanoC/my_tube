@@ -2,8 +2,7 @@
   font-family: Roboto, sans-serif;
   width: 256px; /* image width */
   height: calc(144px + 48px); /* image height + delete button height */
-  margin-bottom: 18px;
-  margin-right: 18px;
+  margin: 0 12px 24px
 }
 
 .paper {

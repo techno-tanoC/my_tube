@@ -5,7 +5,7 @@ import styles from './styles.css'
 
 export default ({items}) => {
   return (
-    <div className={styles.itemList}>
+    <div className={styles.itemList + " " + styles.listWidth}>
       {items.reverse().map(item =>
         <Item
           key={item.id}
