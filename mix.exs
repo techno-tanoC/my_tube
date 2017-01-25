@@ -20,7 +20,7 @@ defmodule MyTube.Mixfile do
       mod: {MyTube, []},
       applications: [
         :phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-        :phoenix_ecto, :postgrex, :comeonin
+        :phoenix_ecto, :postgrex, :comeonin, :httpoison,
       ]
     ]
   end
@@ -40,6 +40,7 @@ defmodule MyTube.Mixfile do
       {:cowboy, "~> 1.0"},
       {:comeonin, "~> 3.0"},
       {:secure_random, "~> 0.5"},
+      {:httpoison, "~> 0.10.0"},
     ]
   end
 
