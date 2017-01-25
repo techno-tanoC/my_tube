@@ -40,5 +40,6 @@ export const actions = props => [
   <FlatButton
     label="Submit"
     primary={true}
+    disabled={!props.url}
     onTouchTap={() => postItem(props)} />
 ]
