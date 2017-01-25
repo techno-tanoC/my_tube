@@ -15,7 +15,7 @@ const items = (state = Seq(), action) => {
   }
 }
 
-const createDialog = (state = {open: false, title: "", url: ""}, action) => {
+const createDialog = (state = {open: false, url: ""}, action) => {
   switch (action.type) {
     case UPDATE_CREATE_DIALOG:
       return {...state, ...action.payload}

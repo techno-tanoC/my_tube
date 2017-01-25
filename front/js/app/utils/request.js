@@ -11,11 +11,11 @@ export const getItems = func => {
     .end(func)
 }
 
-export const createItem = (title, url, func) => {
+export const createItem = (url, func) => {
   request
     .post('/api/items')
     .set("x-access-token", accessToken())
-    .send({item: {title, url}})
+    .send({item: {url}})
     .end(func)
 }
 

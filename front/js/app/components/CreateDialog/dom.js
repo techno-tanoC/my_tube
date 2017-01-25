@@ -22,9 +22,6 @@ export default props => {
         actions={actions(props)}
       >
         <InputField
-          label="Title"
-          onChange={(e, val) => changeUrl({title: val})} />
-        <InputField
           label="URL"
           onChange={(e, val) => changeUrl({url: val})} />
       </Dialog>

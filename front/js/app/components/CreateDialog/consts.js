@@ -25,11 +25,11 @@ export const InputField = ({label, onChange}) => {
 }
 
 const postItem = ({title, url, reload, closeDialog}) => {
-  if (title && url) {
-    createItem(title, url, (err, res) => {
-      closeDialog()
+  if (url) {
+    createItem(url, (err, res) => {
       reload()
     })
+    closeDialog()
   }
 }
 

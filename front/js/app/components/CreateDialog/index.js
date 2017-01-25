@@ -11,10 +11,10 @@ const mapStateToProps = ({createDialog}) => ({
 
 const mapDispatchToProps = dispatch => ({
   openDialog: () => {
-    dispatch(updateCreateDialog({open: true, title: "", url: ""}))
+    dispatch(updateCreateDialog({open: true, url: ""}))
   },
   closeDialog: () => {
-    dispatch(updateCreateDialog({open: false, title: "", url: ""}))
+    dispatch(updateCreateDialog({open: false, url: ""}))
   },
   changeUrl: change => {
     dispatch(updateCreateDialog(change))
