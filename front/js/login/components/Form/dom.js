@@ -3,13 +3,14 @@ import TextField from 'material-ui/TextField'
 import FlatButton from 'material-ui/FlatButton'
 
 import {submit} from './consts.js'
+import styles from './styles.css'
 
 const login = (name, pass) => {
 }
 
 export default ({name, pass, onChange}) => {
   return (
-    <div>
+    <div className={styles.center}>
       <TextField
         hintText="Name"
         floatingLabelText="Name"
