@@ -16,4 +16,14 @@ defmodule MyTube.Item do
     |> cast(params, [:title, :url])
     |> validate_required([:title, :url])
   end
+
+  def title_url(url) do
+    id =
+      url
+      |> String.split("?")
+      |> List.last
+      |> URI.decode_query
+      |> Map.get("v")
+    "https://noembed.com/embed?url=https://www.youtube.com/watch?v=" <> id
+  end
 end

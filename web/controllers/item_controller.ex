@@ -8,8 +8,16 @@ defmodule MyTube.ItemController do
     render(conn, "index.json", items: items)
   end
 
-  def create(conn, %{"item" => item_params}) do
-    changeset = Item.changeset(%Item{}, item_params)
+  def create(conn, %{"item" => %{"url" => url}}) do
+    title =
+      url
+      |> Item.title_url
+      |> HTTPoison.get!
+      |> Map.get(:body)
+      |> Poison.decode!
+      |> Map.get("title")
+
+    changeset = Item.changeset(%Item{}, %{"title" => title, "url" => url})
 
     case Repo.insert(changeset) do
       {:ok, item} ->
