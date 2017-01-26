@@ -1,0 +1,25 @@
+version: "2"
+services:
+  back:
+    build: .
+    command: "mix phoenix.server"
+    ports:
+      - "63110:63110"
+    environment:
+      - DOCKER_HOST
+      - MIX_ENV=prod
+      - PORT=63110
+      - DATABASE_HOST=db
+      - DATABASE_USERNAME=postgres
+      - DATABASE_PASSWORD=postgres
+    depends_on:
+      - db
+    tty: true
+    stdin_open: true
+  db:
+    image: postgres:9.6
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    expose:
+      - "5432"
