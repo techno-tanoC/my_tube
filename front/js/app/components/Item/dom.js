@@ -20,8 +20,7 @@ export default ({id, title, url, reload}) => {
           </div>
           <IconButton className={styles.deleteButton}>
             <Delete onClick={() => {
-              deleteItem(id)
-              reload()
+              deleteItem(id, () => reload())
             }}/>
           </IconButton>
         </div>
