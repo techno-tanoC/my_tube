@@ -2,7 +2,7 @@ version: "2"
 services:
   back:
     build: .
-    command: "mix phoenix.server"
+    command: "/app/rel/my_tube/bin/my_tube console"
     ports:
       - "63110:63110"
     environment:

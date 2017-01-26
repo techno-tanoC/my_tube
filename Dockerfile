@@ -15,3 +15,4 @@ RUN mix deps.compile
 ADD . /app
 RUN mix compile
 RUN mix phoenix.digest
+RUN mix release
