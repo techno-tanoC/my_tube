@@ -10,7 +10,7 @@ import styles from './styles.css'
 export default ({id, title, url, reload}) => {
   return (
     <div className={styles.wrapper}>
-      <OverlayLink url={url}>
+      <OverlayLink title={title} url={url}>
         <div className={styles.paper}>
           <img src={thumb(url)} className={styles.thumb} />
           <div className={styles.title}>
