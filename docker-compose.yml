@@ -1,6 +1,7 @@
 version: "2"
 services:
   back:
+    restart: always
     build: .
     command: "/app/rel/my_tube/bin/my_tube console"
     ports:
