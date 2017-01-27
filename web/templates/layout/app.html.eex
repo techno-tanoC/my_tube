@@ -9,6 +9,7 @@
 
     <title>MyTube</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link rel="icon" href="favicon.ico">
   </head>
 
   <body style="margin: 0; padding: 0;">
