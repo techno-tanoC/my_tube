@@ -17,13 +17,22 @@ defmodule MyTube.Item do
     |> validate_required([:title, :url])
   end
 
-  def title_url(url) do
-    id =
-      url
-      |> String.split("?")
-      |> List.last
-      |> URI.decode_query
-      |> Map.get("v")
+  def youtube_id(url) do
+    case URI.parse(url) do
+      %URI{host: "www.youtube.com", query: query} ->
+        {:ok, query |> URI.decode_query |> Map.get("v")}
+      %URI{host: "youtu.be", path: path} ->
+        {:ok, path |> String.slice(1..-1)}
+      _ ->
+        {:error, "It is not URI"}
+    end
+  end
+
+  def title_url(id) do
     "https://noembed.com/embed?url=https://www.youtube.com/watch?v=" <> id
+  end
+
+  def youtube_url(id) do
+    "https://youtube.com/?v=" <> id
   end
 end
