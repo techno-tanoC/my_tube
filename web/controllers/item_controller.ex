@@ -9,15 +9,18 @@ defmodule MyTube.ItemController do
   end
 
   def create(conn, %{"item" => %{"url" => url}}) do
+    {:ok, id} = Item.youtube_id(url)
     title =
-      url
-      |> Item.title_url
-      |> HTTPoison.get!
-      |> Map.get(:body)
-      |> Poison.decode!
-      |> Map.get("title")
+      with title_url = Item.title_url(id),
+           {:ok, %{body: body}} <- HTTPoison.get(title_url),
+           {:ok, %{"title" => title}} <- Poison.decode(body)
+        do
+          title
+        else
+          _ -> "Unknown title"
+        end
 
-    changeset = Item.changeset(%Item{}, %{"title" => title, "url" => url})
+    changeset = Item.changeset(%Item{}, %{"title" => title, "url" => Item.youtube_url(id)})
 
     case Repo.insert(changeset) do
       {:ok, item} ->

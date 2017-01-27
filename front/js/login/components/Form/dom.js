@@ -17,6 +17,7 @@ export default ({name, pass, onChange}) => {
         onChange={(e, val) => onChange({name: val})} />
       <br />
       <TextField
+        type="password"
         hintText="Password"
         floatingLabelText="Password"
         onChange={(e, val) => onChange({pass: val})} />
