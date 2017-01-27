@@ -33,6 +33,6 @@ defmodule MyTube.Item do
   end
 
   def youtube_url(id) do
-    "https://youtube.com/?v=" <> id
+    "https://youtube.com/watch?v=" <> id
   end
 end
