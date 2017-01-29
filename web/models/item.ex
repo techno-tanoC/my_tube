@@ -28,11 +28,24 @@ defmodule MyTube.Item do
     end
   end
 
-  def title_url(id) do
-    "https://noembed.com/embed?url=https://www.youtube.com/watch?v=" <> id
+  def get_title(id) do
+    with title_url = title_url(id),
+         {:ok, %{body: body}} <- HTTPoison.get(title_url),
+         {:ok, %{"items" => items}} <- Poison.decode(body)
+      do
+        items |> hd |> get_in(["snippet", "title"])
+      else
+        _ -> "Unknown title"
+      end
+  end
+
+  defp title_url(id) do
+    key = Application.get_env(:my_tube, MyTube.Auth)[:key]
+    "https://www.googleapis.com/youtube/v3/videos?id=#{id}&key=#{key}&part=snippet&fields=items(snippet(title))"
   end
 
   def youtube_url(id) do
     "https://youtube.com/watch?v=" <> id
   end
+
 end
