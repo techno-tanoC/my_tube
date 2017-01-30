@@ -1,7 +1,7 @@
 version: "2"
 services:
   back:
-    build: .
+    image: mytube_back
     command: "mix phoenix.server"
     ports:
       - "63110:63110"
