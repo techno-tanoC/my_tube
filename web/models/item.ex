@@ -21,6 +21,8 @@ defmodule MyTube.Item do
     case URI.parse(url) do
       %URI{host: "www.youtube.com", query: query} ->
         {:ok, query |> URI.decode_query |> Map.get("v")}
+      %URI{host: "youtube.com", query: query} ->
+        {:ok, query |> URI.decode_query |> Map.get("v")}
       %URI{host: "youtu.be", path: path} ->
         {:ok, path |> String.slice(1..-1)}
       _ ->
