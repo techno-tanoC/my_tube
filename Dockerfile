@@ -1,4 +1,4 @@
-FROM elixir:1.4.0
+FROM elixir:1.4.5
 
 ENV MIX_ENV prod
 
